@@ -1,11 +1,10 @@
-
 """
 Este script tiene el cometido de tomar un directorio, que puede tener varios niveles de subdirectorios,
 hacer una copia con la misma jerarquía, pero sólo manteniendo los archivos de la extensión que
 le hayamos indicado
 
  Ejemplo de comando que ejecuta el script.
-    py .\separador_dani.py -source a -target b --list ".pdf" "txt"
+    py .separador_dani.py -source a -target b --list ".pdf" "txt"
 
  Enlaces importantes
  - argparse: Para añadir parametros al comando.
@@ -13,7 +12,6 @@ le hayamos indicado
 
 """
 import argparse
-
 
 
 def argument_parser():
@@ -28,10 +26,10 @@ def argument_parser():
     parser = argparse.ArgumentParser(
         description="Exercise for copying a directory and the desired files")
 
-    parser.add_argument("-source","--source_path",
+    parser.add_argument("-source", "--source_path",
                         help="Path to the directory you want to copy.",
                         type=str, required=True)
-    parser.add_argument("-target","--target_path",
+    parser.add_argument("-target", "--target_path",
                         help="Path to the directory where you want to make the copy.",
                         type=str, required=True)
     parser.add_argument("-list", "--list_extensions",
@@ -43,7 +41,7 @@ def argument_parser():
     return args
 
 
-def check_extension(extensions_to_check:[str])->[str]:
+def check_extension(extensions_to_check: [str]) -> [str]:
     """
     Method to check if the extensions inside of the list, starts with  a ".".
     If the extension doesnt have the "." , the method adds it to the begging
@@ -56,12 +54,11 @@ def check_extension(extensions_to_check:[str])->[str]:
     print(extensions_to_check)
 
     for extension in extensions_to_check:
-        list_checked.append(extension) if extension.startswith('.') else list_checked.append("."+extension)
+        list_checked.append(extension) if extension.startswith('.') else list_checked.append("." + extension)
 
     print("After")
     print(list_checked)
     return list_checked
-
 
 
 def main():
@@ -73,16 +70,15 @@ def main():
     target_path = args.target_path
     extensions_to_save = args.list_extensions
 
-    #Format the arguments to secure the content
+    # Format the arguments to secure the content
     extensions_to_save = check_extension(extensions_to_save)
 
-    #Get the structure of the directories and files from the source_path
+    # Get the structure of the directories and files from the source_path
 
-
-
-    #Generate the structure of the directories and files to target_path
-
+    # Generate the structure of the directories and files to target_path
 
     print("...Finish")
+
+
 if __name__ == "__main__":
     main()
