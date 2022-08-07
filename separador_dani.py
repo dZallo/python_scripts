@@ -49,15 +49,9 @@ def check_extension(extensions_to_check: [str]) -> [str]:
     @return list_checked: a list of strings with dots
     """
     list_checked = []
-
-    print("Before")
-    print(extensions_to_check)
-
     for extension in extensions_to_check:
         list_checked.append(extension) if extension.startswith('.') else list_checked.append("." + extension)
 
-    print("After")
-    print(list_checked)
     return list_checked
 
 
