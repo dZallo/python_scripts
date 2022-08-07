@@ -4,7 +4,10 @@ hacer una copia con la misma jerarquía, pero sólo manteniendo los archivos de 
 le hayamos indicado
 
  Ejemplo de comando que ejecuta el script.
-    py .separador_dani.py -source a -target b --list ".pdf" "txt"
+    py .separador_dani.py
+     -source C:\repos\python\python_scripts\resources
+     -target b
+     -list ".pdf" "txt"
 
  Enlaces importantes
  - argparse: Para añadir parametros al comando.
@@ -12,6 +15,7 @@ le hayamos indicado
 
 """
 import argparse
+import os
 
 
 def argument_parser():
@@ -68,6 +72,11 @@ def main():
     extensions_to_save = check_extension(extensions_to_save)
 
     # Get the structure of the directories and files from the source_path
+    print(source_path)
+    list_files_folders = os.listdir(source_path)
+    for file_folder in list_files_folders:
+        print(file_folder)
+
 
     # Generate the structure of the directories and files to target_path
 
